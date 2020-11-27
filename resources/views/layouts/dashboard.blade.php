@@ -84,10 +84,10 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-2">  
-            <x-menu :active="$active" />
+            <x-menu :active="$active"/>
           </div>
 
-          <div class="col-md-10 main-content">
+          <div class="col-md-10 main-content p-5">
             @yield('content')
           </div>
         </div>
