@@ -20,7 +20,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-8 offset-md-2">
-        <form action="{{ url('dashboard/user/update/'.$user->id) }}" method="POST">
+        <form action="{{ route('dashboard.users.update', ['id' => $user->id]) }}" method="POST">
           @csrf
           @method('put')
           <div class="form-group">
@@ -63,7 +63,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
-          <form action="{{ url('dashboard/user/delete/'.$user->id) }}" method="POST">
+          <form action="{{ route('dashboard.users.delete', ['id' => $user->id]) }}" method="POST">
             @csrf
             @method('delete')
             <button class="btn btn-sm btn-danger" title="Delete"><i class="fas fa-trash"> Delete</i></button>
