@@ -2,6 +2,10 @@
 
 
 @section('content')
+  <div class="mb-2">
+    <a href="{{ route('dashboard.movies.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Movie</a>
+  </div>
+
   <div class="card">
     <div class="card-header">
       <div class="row">
