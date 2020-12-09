@@ -20,9 +20,8 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-8 offset-md-2">
-        <form action="{{ route('dashboard.movies.store') }}" method="POST">
+        <form action="{{ route('dashboard.movies.store') }}" method="POST" enctype="multipart/form-data">
           @csrf
-          @method('put')
           <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" name="title" value="">
