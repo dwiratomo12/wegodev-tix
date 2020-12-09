@@ -3,7 +3,7 @@
 
 @section('content')
   <div class="mb-2">
-    <a href="{{ route('dashboard.movies.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Movie</a>
+    <a href="{{ route('dashboard.movies.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Movie</a>
   </div>
 
   <div class="card">
@@ -31,18 +31,22 @@
         <table class="table table-borderless table-striped table-hover">
           <thead>
             <tr>
-              <th>No</th>
-              <th>Title</th>
+              {{-- <th>No</th> --}}
               <th>Thumbnail</th>
+              <th>Title</th>
               <th>&nbsp;</th>
             </tr>
           </thead>
         <tbody>
             @foreach ($movies as $movie)
                 <tr>
-                  <th scope="row">{{ ($movies->currentPage() - 1) * $movies->perPage() + $loop->iteration }}</th scope="row">
-                  <td>{{ $movie->title }}</td>
-                  <td>{{ $movie->thumbnail }}</td>
+                  {{-- <th scope="row">{{ ($movies->currentPage() - 1) * $movies->perPage() + $loop->iteration }}</th scope="row"> --}}
+                    <td class="col-thumbnail">
+                      <img src="{{ asset('storage/movies/'.$movie->thumbnail) }}" class="img-fluid">
+                    </td>
+                  <td>
+                    <h4><strong>{{ $movie->title }}</strong></h4>
+                  </td>
                   <td>
                     {{-- <a href="{{ url('dashboard/movie/edit/'.$movie->id) }}" title="edit" class="btn btn-success btn-sm">
                     <i class="fas fa-pen"></i></a> --}}
