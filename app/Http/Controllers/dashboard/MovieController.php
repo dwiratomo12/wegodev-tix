@@ -45,7 +45,9 @@ class MovieController extends Controller
 
 
         return view('dashboard/movie/form', [
-            'active' => $active
+            'active'    => $active,
+            'button'    => 'Create',
+            'url'       => 'dashboard.movies.store'
         ]);
     }
 
@@ -60,7 +62,7 @@ class MovieController extends Controller
         $validator = Validator::make($request->all(), [
             'title'         => 'required|unique:App\Models\Movie,title',
             'description'   => 'required',
-            'thumbnail'   => 'required|image'
+            'thumbnail'     => 'required|image'
         ]);
 
         if ($validator->fails()) {
