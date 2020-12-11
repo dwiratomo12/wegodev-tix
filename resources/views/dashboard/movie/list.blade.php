@@ -51,7 +51,7 @@
                     {{-- <a href="{{ url('dashboard/movie/edit/'.$movie->id) }}" title="edit" class="btn btn-success btn-sm">
                     <i class="fas fa-pen"></i></a> --}}
 
-                      <a href="{{ route('dashboard.movies.edit', ['id' => $movie->id]) }}" title="edit" class="btn btn-success btn-sm">
+                      <a href="{{ route('dashboard.movies.edit', $movie->id) }}" title="edit" class="btn btn-success btn-sm">
                         <i class="fas fa-pen"></i></a>
                   </td>
                 </tr>
