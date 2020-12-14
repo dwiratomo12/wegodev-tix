@@ -44,11 +44,11 @@
                 <label for="status">Status</label>
               </div>
               <div class="form-check form-check-inline">
-                <input type="radio" name="status" class="form-check-input" value="active" id="active">
+                <input type="radio" name="status" class="form-check-input" value="active" id="active" @if((old('status') ?? $theater->status ?? '') == 'active') checked @endif>
                 <label for="active" class="form-check-label">Active</label>
               </div>
               <div class="form-check form-check-inline">
-                <input type="radio" name="status" class="form-check-input" value="inactive" id="inactive">
+                <input type="radio" name="status" class="form-check-input" value="inactive" id="inactive" @if((old('status') ?? $theater->status ?? '') == 'inactive') checked @endif>
                 <label for="inactive" class="form-check-label">In active</label>
               </div>
               @error('status')
