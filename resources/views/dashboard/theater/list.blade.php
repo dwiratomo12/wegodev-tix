@@ -3,7 +3,7 @@
 
 @section('content')
   <div class="mb-2">
-    <a href="{{ route('dashboard.movies.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Movie</a>
+    <a href="{{ route('dashboard.theaters.create') }}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Theater</a>
   </div>
 
   @if(session()->has('message'))
@@ -19,11 +19,11 @@
     <div class="card-header">
       <div class="row">
         <div class="col-8 align-self-center">
-          <h3>Movies</h3>
+          <h3>Theaters</h3>
         </div>
         {{-- search form --}}
         <div class="col-4">
-          <form action="{{ url('dashboard/movies')}}" method="GET">
+          <form action="{{ route('dashboard.theaters')}}" method="GET">
             <div class="input-group">
               <input type="text" class="form-control form-control-sm" name="q" value="{{ $request['q'] ?? '' }}">
               <div class="input-group-append">
@@ -36,31 +36,30 @@
     </div>
         
     <div class="card-body p-0">
-      @if($movies->total())
+      @if($theaters->total())
         <table class="table table-borderless table-striped table-hover">
           <thead>
             <tr>
               {{-- <th>No</th> --}}
-              <th>Thumbnail</th>
-              <th>Title</th>
+              <th>Theater</th>
+              <th>Address</th>
               <th>&nbsp;</th>
             </tr>
           </thead>
         <tbody>
-            @foreach ($movies as $movie)
-                <tr>
-                  {{-- <th scope="row">{{ ($movies->currentPage() - 1) * $movies->perPage() + $loop->iteration }}</th scope="row"> --}}
-                    <td class="col-thumbnail">
-                      <img src="{{ asset('storage/movies/'.$movie->thumbnail) }}" class="img-fluid">
-                    </td>
+            @foreach ($theaters as $theater)
+                <tr> 
                   <td>
-                    <h4><strong>{{ $movie->title }}</strong></h4>
+                    {{ $theater->theater }}
                   </td>
                   <td>
-                    {{-- <a href="{{ url('dashboard/movie/edit/'.$movie->id) }}" title="edit" class="btn btn-success btn-sm">
+                    {{ $theater->address }}
+                  </td>
+                  <td>
+                    {{-- <a href="{{ url('dashboard/theater/edit/'.$theater->id) }}" title="edit" class="btn btn-success btn-sm">
                     <i class="fas fa-pen"></i></a> --}}
 
-                      <a href="{{ route('dashboard.movies.edit', $movie->id) }}" title="edit" class="btn btn-success btn-sm">
+                      <a href="{{ route('dashboard.theaters.edit', $theater->id) }}" title="edit" class="btn btn-success btn-sm">
                         <i class="fas fa-pen"></i></a>
                   </td>
                 </tr>
@@ -68,9 +67,9 @@
         </tbody>
         </table> 
 
-        {{ $movies->appends($request)->links() }}
+        {{ $theaters->appends($request)->links() }}
       @else
-          <h4 class="text-center p-3">{{ __('messages.no_data', ['module' => 'Movie']) }}</h4>
+          <h4 class="text-center p-3">{{ __('messages.no_data', ['module' => 'Theater']) }}</h4>
       @endif
     </div>
   </div>
