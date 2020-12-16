@@ -20,7 +20,7 @@ class CreateTableArrangeMovie extends Migration
             $table->string('studio');
             $table->integer('price');
             $table->json('seats');
-            $table->json('scheadule');
+            $table->json('schedules');
             $table->enum('status', ['coming soon', 'in theater', 'finish']);
             $table->timestamps();
         });
