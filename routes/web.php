@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/movies/{movie}', [App\Http\Controllers\Dashboard\MovieController::class, 'edit'])->name('dashboard.movies.edit');
     Route::put('/dashboard/movies/{movie}', [App\Http\Controllers\Dashboard\MovieController::class, 'update'])->name('dashboard.movies.update');
     Route::delete('/dashboard/movies/{movie}', [App\Http\Controllers\Dashboard\MovieController::class, 'destroy'])->name('dashboard.movies.delete');
-    
+
     //theaters
     Route::get('/dashboard/theaters', [App\Http\Controllers\Dashboard\TheaterController::class, 'index'])->name('dashboard.theaters');
     Route::get('/dashboard/theaters/create', [App\Http\Controllers\Dashboard\TheaterController::class, 'create'])->name('dashboard.theaters.create');
@@ -40,6 +40,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/theaters/{theater}', [App\Http\Controllers\Dashboard\TheaterController::class, 'edit'])->name('dashboard.theaters.edit');
     Route::put('/dashboard/theaters/{theater}', [App\Http\Controllers\Dashboard\TheaterController::class, 'update'])->name('dashboard.theaters.update');
     Route::delete('/dashboard/theaters/{theater}', [App\Http\Controllers\Dashboard\TheaterController::class, 'destroy'])->name('dashboard.theaters.delete');
+
+    //arrange movie
+    Route::get('/dashboard/theaters/arrange/movies/{theater}', [App\Http\Controllers\Dashboard\ArrangeMovieController::class, 'index'])->name('dashboard.theaters.arrange.movie');
+    Route::get('/dashboard/theaters/arrange/movies/create/{theater}', [App\Http\Controllers\Dashboard\ArrangeMovieController::class, 'create'])->name('dashboard.theaters.arrange.movie.create');
+    Route::post('/dashboard/theaters/arrange/movies', [App\Http\Controllers\Dashboard\ArrangeMovieController::class, 'store'])->name('dashboard.theaters.arrange.movie.store');
+    Route::get('/dashboard/theaters/arrange/movies/{theater}/{arrangeMovie}', [App\Http\Controllers\Dashboard\ArrangeMovieController::class, 'edit'])->name('dashboard.theaters.arrange.movie.edit');
+    Route::put('/dashboard/theaters/arrange/movies/{arrangeMovie}', [App\Http\Controllers\Dashboard\ArrangeMovieController::class, 'update'])->name('dashboard.theaters.arrange.movie.update');
+    Route::delete('/dashboard/theaters/arrange/movies/{arrangeMovie}', [App\Http\Controllers\Dashboard\ArrangeMovieController::class, 'destroy'])->name('dashboard.theaters.arrange.movie.delete');
 
 
     //Users

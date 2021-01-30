@@ -23,16 +23,19 @@ class ArrangeMovieController extends Controller
 
         $active = 'Theaters';
 
-        // $theaters = $theaters->when($q, function ($query) use ($q) {
-        //     return $query->where('theater', 'like', '%' . $q . '%');
-        // })
-        //     ->paginate(10);
+        $arrangeMovies = ArrangeMovie::where('theater_id', $theater->id)
+            ->whereHas('movies', function ($query) use ($q) {
+                $query->where('title', 'like', "%$q%");
+            })
+            ->paginate();
 
         $request = $request->all();
+
         return view('dashboard/arrange_movie/list', [
-            'theater'  => $theater,
-            'request'   => $request,
-            'active'    => $active
+            'arrangeMovies'     => $arrangeMovies,
+            'theater'           => $theater,
+            'request'           => $request,
+            'active'            => $active
         ]);
     }
 
@@ -119,9 +122,20 @@ class ArrangeMovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Theater $theater, ArrangeMovie $arrangeMovie)
     {
-        //
+        $active = 'Theaters';
+
+        $movies = Movie::get();
+
+        return view('dashboard/arrange_movie/form', [
+            'url'           => 'dashboard.theaters.arrange.movie.update',
+            'button'        => 'Update',
+            'arrangeMovie'  => $arrangeMovie,
+            'theater'       => $theater,
+            'movies'        => $movies,
+            'active'        => $active
+        ]);
     }
 
     /**
