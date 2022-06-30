@@ -40,24 +40,40 @@ class Menu extends Component
                 'icon'  => 'fas fa-tachometer-alt'
             ],
             [
-                'label' => 'Movies',
-                'route' => 'dashboard.movies',
-                'icon'  => 'fas fa-video'
+                'label' => 'Room',
+                'route' => 'dashboard.rooms',
+                'icon'  => 'fas fa-door-closed'
             ],
             [
-                'label' => 'Theaters',
-                'route' => 'dashboard.theaters',
-                'icon'  => 'fas fa-university'
+                'label' => 'Transaction',
+                'route' => 'dashboard.transactions',
+                'icon'  => 'fas fa-hands-helping'
             ],
             [
-                'label' => 'Tickets',
-                'route' => 'dashboard.tickets',
-                'icon'  => 'fas fa-ticket-alt'
+                'label' => 'History',
+                'route' => 'dashboard.histori.admin',
+                'icon'  => 'fas fa-history'
             ],
             [
                 'label' => 'Users',
-                'route' => 'dashboard.users',
+                'route' => 'dashboard.mahasiswa',
                 'icon'  => 'fas fa-users'
+            ],
+        ];
+    }
+
+    public function mahasiswa()
+    {
+        return [
+            [
+                'label' => 'Dashboard',
+                'route' => 'dashboard',
+                'icon'  => 'fas fa-tachometer-alt'
+            ],
+            [
+                'label' => 'Transaction',
+                'route' => 'dashboard.transactions',
+                'icon'  => 'fas fa-hands-helping'
             ],
         ];
     }

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
@@ -12,10 +13,26 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Transaction $transactions)
     {
+        $q = $request->input('q');
         $active = 'Dashboard';
-        return view('home', ['active' => $active]);
+
+        $transactions = $transactions->when($q, function ($query) use ($q) {
+            return $query->where('nama_ruangan', 'like', '%' . $q . '%')
+                ->orwhere('nama_depan', 'like', '%' . $q . '%')
+                ->orwhere('nama_belakang', 'like', '%' . $q . '%')
+                ->orwhere('nama_ruangan', 'like', '%' . $q . '%')
+                ->orwhere('nim', 'like', '%' . $q . '%');
+        })
+            ->paginate(10);
+
+        $request = $request->all();
+        return view('home', [
+            'transactions'      => $transactions,
+            'request'           => $request,
+            'active'            => $active
+        ]);
     }
 
     /**
